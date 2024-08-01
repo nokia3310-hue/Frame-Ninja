@@ -25,28 +25,103 @@ namespace Frame_Ninja
 
         private void trailtimer_Tick(object sender, EventArgs e)
         {
-            if (form.Getmousestate())
+            if (form.Getmousestate() || true)
             {
-                double mouseposX = Cursor.Position.X / 10;
+                /*double mouseposX = Cursor.Position.X / 10;
                 mouseposX = Math.Round(mouseposX);
                 mouseposX *= 10;
                 mouseposX -= 5;
                 double mouseposY = Cursor.Position.Y / 10;
                 mouseposY = Math.Round(mouseposY);
                 mouseposY *= 10;
-                mouseposY -= 5;
+                mouseposY -= 5;*/
+
+                Point mouseposP = crappyfy(new Point(Cursor.Position.X-5, Cursor.Position.Y-5));
 
 
-                if (counter == number)
+
+                int des = 20; // desired distance
+
+                int crt = 40; // critical distance
+
+                if (number == 0)
                 {
-                    this.Location = new Point((int)mouseposX, (int)mouseposY);
+                    /*last = Form1.Cursortrail[number - 1].Location;
+
+                    if (pythagoras(last, this.Location) > 5)
+                    {
+                        
+                        //this.Location = last;
+                    }*/
+
+                    if(pythagoras(mouseposP, this.Location) > des && form.Getmousestate())
+                    {
+                        this.Location = mouseposP; 
+                    }
+                    
+                } else
+                {
+                    /* if (counter == number)
+                     {
+                          this.Location = new Point((int)mouseposX, (int)mouseposY);
+                     }*/
+                    Point last = Form1.Cursortrail[number - 1].Location;
+                        
+                    double dist = pythagoras(last, this.Location);
+                    if (dist > des)
+                    {
+                        if(dist > crt)
+                        {
+                            Point shortened = crappyfy(disapointment(last, this.Location, crt));
+                            
+                            if(shortened != last)
+                            {
+                                this.Location = crappyfy(disapointment(last, this.Location, crt));
+                            }
+                            
+
+                        } else
+                        {
+                            this.Location = last;
+                        }
+                        
+                    }
                 }
+                
+                
                 counter++;
                 if (counter == 100)
                 {
                     counter = 0;
                 }
             }
+        }
+
+        double pythagoras(Point a, Point b)
+        {
+            return Math.Sqrt(Math.Pow(b.X - a.X, 2) + Math.Pow(b.Y - a.Y, 2)); ;
+        }
+
+
+        Point disapointment(Point a, Point b, double dl)
+        {
+            double length = pythagoras(a, b);
+            double d1 = (b.X - a.X) / length;
+            double d2 = (b.Y - a.Y) / length;
+            return new Point((int)Math.Round(d1 * dl) + a.X, (int)Math.Round(d2 * dl) + a.Y);
+        }
+
+        Point crappyfy(Point a)
+        {
+            double aX = a.X / 10;
+            aX = Math.Round(aX);
+            aX *= 10;
+            
+            double aY = a.Y / 10;
+            aY = Math.Round(aY);
+            aY *= 10;
+           
+            return new Point((int)aX, (int)aY);
         }
     }
 }
