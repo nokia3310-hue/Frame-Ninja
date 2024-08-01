@@ -66,6 +66,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Splitfruit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Splitfruit.Designer.cs">
+      <DependentUpon>Splitfruit.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CursorTrailNodes.resx">
       <DependentUpon>CursorTrailNodes.cs</DependentUpon>
     </EmbeddedResource>

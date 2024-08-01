@@ -19,13 +19,11 @@ namespace Frame_Ninja
             InitializeComponent();
             this.Height = Screen.PrimaryScreen.Bounds.Height;
             this.Width = Screen.PrimaryScreen.Bounds.Width;
-            button1.Location = new Point(this.Width/3, this.Height/3);
-            button1.Height = this.Height / 3;
-            button1.Width = this.Width / 3;
 
             for (int i = 0; i < Mainfruit.Length; i++)
             {
-                Mainfruit[i] = new Fruit(this);
+                Mainfruit[i] = new Fruit(this, i);
+                Mainfruit[i].Show();
             }
             for (int i = 0; i < Cursortrail.Length; i++)
             {
@@ -46,6 +44,14 @@ namespace Frame_Ninja
         public bool Getmousestate()
         {
             return mouseisdown;
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Escape)
+            {
+                System.Windows.Forms.Application.Exit();
+            }
         }
     }
 }
