@@ -24,11 +24,7 @@ namespace Frame_Ninja
 
             for (int i = 0; i < Mainfruit.Length; i++)
             {
-<<<<<<< HEAD
-                Mainfruit[i] = new Fruit(this);
-=======
                 Mainfruit[i] = new Fruit(this, i);
->>>>>>> ff9fcc324f8d24c3b3cfce44604f9533b23ce02e
                 Mainfruit[i].Show();
             }
             for (int i = 0; i < Cursortrail.Length; i++)
