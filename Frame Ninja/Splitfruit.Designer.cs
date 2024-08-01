@@ -1,7 +1,7 @@
 ﻿
 namespace Frame_Ninja
 {
-    partial class Form1
+    partial class Splitfruit
     {
         /// <summary>
         /// Required designer variable.
@@ -29,24 +29,12 @@ namespace Frame_Ninja
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // Form1
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "Form1";
-            this.Opacity = 0.01D;
-            this.Text = "Form1";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
-            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
-            this.ResumeLayout(false);
-
+            this.Text = "Splitfruit";
         }
 
         #endregion
     }
 }
-

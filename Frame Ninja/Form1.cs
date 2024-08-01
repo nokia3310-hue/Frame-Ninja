@@ -24,7 +24,11 @@ namespace Frame_Ninja
 
             for (int i = 0; i < Mainfruit.Length; i++)
             {
+<<<<<<< HEAD
                 Mainfruit[i] = new Fruit(this);
+=======
+                Mainfruit[i] = new Fruit(this, i);
+>>>>>>> ff9fcc324f8d24c3b3cfce44604f9533b23ce02e
                 Mainfruit[i].Show();
             }
             for (int i = 0; i < Cursortrail.Length; i++)
@@ -68,6 +72,14 @@ namespace Frame_Ninja
         public bool Getmousestate()
         {
             return mouseisdown;
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Escape)
+            {
+                System.Windows.Forms.Application.Exit();
+            }
         }
     }
 }
