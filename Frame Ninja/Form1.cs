@@ -14,7 +14,7 @@ namespace Frame_Ninja
     public partial class Form1 : Form
     {
         public static Fruit[] Mainfruit = new Fruit[20];
-        public static CursorTrailNodes[] Cursortrail = new CursorTrailNodes[100];
+        public static CursorTrailNodes[] Cursortrail = new CursorTrailNodes[10];
         public Point[] mouseTrack = new Point[20];
         public Form1()
         {
@@ -34,25 +34,8 @@ namespace Frame_Ninja
             }
 
 
-            Thread vt = new Thread(new ThreadStart(velocitycycle));
-            vt.Start();
-        }
-
-        private void velocitycycle()
-        {
-            while(true)
-            {
-                for(int i = mouseTrack.Length-1; i > 0; i--)
-                {
-                    
-                    mouseTrack[i] = mouseTrack[i - 1];
-                    mouseTrack[0] = Cursor.Position;
-
-                    Mainfruit[i].Location = mouseTrack[i];
-                }
-
-                Thread.Sleep(100);
-            }
+            /*Thread vt = new Thread(new ThreadStart(velocitycycle));
+            vt.Start();*/
         }
 
         private bool mouseisdown;
@@ -77,5 +60,6 @@ namespace Frame_Ninja
                 System.Windows.Forms.Application.Exit();
             }
         }
+        
     }
 }
