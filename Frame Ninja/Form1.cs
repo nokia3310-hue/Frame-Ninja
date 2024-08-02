@@ -15,7 +15,6 @@ namespace Frame_Ninja
     public partial class Form1 : Form
     {
         public static Fruit[] Mainfruit = new Fruit[20];
-//<<<<<<< HEAD
         
         public static CursorTrailNodes[] Cursortrail = new CursorTrailNodes[10];
         public static Point[] mouseTrack = new Point[20];
@@ -24,14 +23,10 @@ namespace Frame_Ninja
 
 
         public static System.Timers.Timer _delayTimer;
-//=======
         //public static CursorTrailNodes[] Cursortrail = new CursorTrailNodes[10];
         //public Point[] mouseTrack = new Point[20];
-//>>>>>>> 0364cb2aa2877f2ceb106796b067529ed070ec85
-        public Form1()
         {
             InitializeComponent();
-            this.Height = Screen.PrimaryScreen.Bounds.Height;
             this.Width = Screen.PrimaryScreen.Bounds.Width;
 
             for (int i = 0; i < Mainfruit.Length; i++)
@@ -50,8 +45,6 @@ namespace Frame_Ninja
             _delayTimer.Interval = 10; 
             _delayTimer.Elapsed += ExecuteFunction; 
             _delayTimer.AutoReset = true; 
-
-//<<<<<<< HEAD
            
             _delayTimer.Start();
             
@@ -92,10 +85,8 @@ namespace Frame_Ninja
 
 
 
-//=======
             /*Thread vt = new Thread(new ThreadStart(velocitycycle));
             vt.Start();*/
-//>>>>>>> 0364cb2aa2877f2ceb106796b067529ed070ec85
         }
 
         private static bool mouseisdown;

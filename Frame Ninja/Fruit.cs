@@ -25,7 +25,7 @@ namespace Frame_Ninja
         {
             InitializeComponent();
             form = fo;
-            timer1.Interval = 1;
+            timer1.Interval = 2;
             this.BackColor = Color.FromArgb(randy.Next(70, 255), randy.Next(70, 255), randy.Next(70, 255));
             number = Number;
         }
