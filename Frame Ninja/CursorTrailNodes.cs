@@ -13,125 +13,111 @@ namespace Frame_Ninja
     public partial class CursorTrailNodes : Form
     {
         Form1 form;
-        private int counter;
         private int number;
-        
+        private bool vis = false;
+        private int nodesize = 10;
+
         public CursorTrailNodes(Form1 fo, int num)
         {
             InitializeComponent();
             form = fo;
             number = num;
-            this.Size = new Size(100, 100);
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = new Point(-100, -100);
+
+            this.MaximumSize = new Size(nodesize, nodesize);
+
         }
+
+
 
         private void trailtimer_Tick(object sender, EventArgs e)
         {
-            if (form.Getmousestate() || true)
+            
+    
+            Point mouseposP = new Point(Cursor.Position.X-(nodesize/2), Cursor.Position.Y-(nodesize/2));
+
+
+            if (form.getVisiblenodes() > number)
             {
-                /*double mouseposX = Cursor.Position.X / 10;
-                mouseposX = Math.Round(mouseposX);
-                mouseposX *= 10;
-                mouseposX -= 5;
-                double mouseposY = Cursor.Position.Y / 10;
-                mouseposY = Math.Round(mouseposY);
-                mouseposY *= 10;
-                mouseposY -= 5;*/
-
-                Point mouseposP = crappyfy(new Point(Cursor.Position.X-5, Cursor.Position.Y-5));
-
-
-                if (Form1.visiblenodes > number)
+             
+                if (vis == false)
                 {
-                    this.Show();
-                }
-                else
-                {
-                    this.Hide();
-                }
-
-                int des = 10; // desired distance
-
-                int crt = 20; // critical distance
-
-                if (number == 0)
-                {
-                    /*last = Form1.Cursortrail[number - 1].Location;
-
-                    if (pythagoras(last, this.Location) > 5)
-                    {
                         
-                        //this.Location = last;
-                    }*/
-
-                    if(pythagoras(mouseposP, this.Location) > des && form.Getmousestate())
-                    {
-                        this.Location = mouseposP; 
-                    }
+                    this.Location = mouseposP;
+                }
+                vis = true;
+                this.Show();
                     
-                } else
-                {
-                    /* if (counter == number)
-                     {
-                          this.Location = new Point((int)mouseposX, (int)mouseposY);
-                     }*/
-                    Point last = Form1.Cursortrail[number - 1].Location;
-                        
-                    double dist = pythagoras(last, this.Location);
-                    if (dist > des)
-                    {
-                        if(dist > crt)
-                        {
-                            Point shortened = crappyfy(disapointment(last, this.Location, crt));
-                            
-                            if(shortened != last)
-                            {
-                                this.Location = crappyfy(disapointment(last, this.Location, crt));
-                            }
-                            
+            }
+            else
+            {
+                this.Hide();
+                this.Location = mouseposP;
+                vis = false;
+                //this.Location = new Point(-100, -100);
+            }
 
-                        } else
-                        {
-                            this.Location = last;
-                        }
-                        
-                    }
-                }
-                
-                
-                counter++;
-                if (counter == 100)
+            int des = 7; // desired distance
+
+            int crt = 15; // critical distance
+
+            if (number == 0)
+            {
+
+                if(pythagoras(mouseposP, this.Location) > des && form.Getmousestate())
                 {
-                    counter = 0;
+                    this.Location = mouseposP; 
+                }
+                    
+            } 
+            else if (vis)
+            {
+   
+                Point last = form.getCursortrail()[number - 1].Location;
+                        
+                double dist = pythagoras(last, this.Location);
+                if (dist > des)
+                {
+                    if(dist > crt)
+                    {
+                        Point shortened = disapointment(last, this.Location, crt);
+                            
+                        if(shortened != last)
+                        {
+                            this.Location = disapointment(last, this.Location, crt);
+                        }
+
+                    } else
+                    {
+                        this.Location = last;
+                    }
+                        
                 }
             }
+            
+            if(form.getVisiblenodes() <= 0)
+            {
+                double s1 = 2*nodesize - 1.5*(Math.Abs((number + 1) - (form.getVisiblenodes() / 2f)));
+
+                this.Size = new Size((int)s1, (int)s1);
+            }
+           
+            
         }
 
-        double pythagoras(Point a, Point b)
+        private double pythagoras(Point a, Point b)
         {
             return Math.Sqrt(Math.Pow(b.X - a.X, 2) + Math.Pow(b.Y - a.Y, 2)); ;
         }
 
 
-        Point disapointment(Point a, Point b, double dl)
+        private Point disapointment(Point a, Point b, double dl) //dl  = desiredlength
         {
             double length = pythagoras(a, b);
             double d1 = (b.X - a.X) / length;
             double d2 = (b.Y - a.Y) / length;
             return new Point((int)Math.Round(d1 * dl) + a.X, (int)Math.Round(d2 * dl) + a.Y);
-        }
-
-        Point crappyfy(Point a)
-        {
-            double aX = a.X / 10;
-            aX = Math.Round(aX);
-            aX *= 10;
-            
-            double aY = a.Y / 10;
-            aY = Math.Round(aY);
-            aY *= 10;
-           
-            //return new Point((int)aX, (int)aY);
-            return a;
         }
     }
 }
