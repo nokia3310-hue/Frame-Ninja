@@ -29,7 +29,7 @@ namespace Frame_Ninja
             }
             catch
             {
-
+                this.BackColor = Color.FromArgb(Farbe.R , Farbe.G , Farbe.B );
             }
             Momentum[0] = randy.Next(-25, 25);
             Momentum[1] = randy.Next(10, 40);

@@ -34,3 +34,4 @@ C:\Users\samuel\Documents\git_repos\Frame-Ninja\Frame Ninja\obj\Debug\Frame Ninj
 C:\Users\samuel\Documents\git_repos\Frame-Ninja\Frame Ninja\obj\Debug\Frame Ninja.csproj.CoreCompileInputs.cache
 C:\Users\samuel\Documents\git_repos\Frame-Ninja\Frame Ninja\obj\Debug\Frame Ninja.exe
 C:\Users\samuel\Documents\git_repos\Frame-Ninja\Frame Ninja\obj\Debug\Frame Ninja.pdb
+C:\Users\point\Documents\git_repos\Frame-Ninja\Frame Ninja\obj\Debug\Frame_Ninja.Splitfruit.resources

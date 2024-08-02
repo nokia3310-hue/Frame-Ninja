@@ -17,6 +17,7 @@ namespace Frame_Ninja
         Random randy = new Random();
         private int counterms;
         private int countersek;
+
         private int number;
         private double[] Momentum = new double[2];//momentum[0] = x   ;   momentum[1] = y
         private bool isSpawned = false;
@@ -64,7 +65,8 @@ namespace Frame_Ninja
             {
                 this.Size = new Size(150, 150);
                 this.Location = new Point(((Screen.PrimaryScreen.Bounds.Width / 2) - (this.Width / 2))+randy.Next(-500, 501), Screen.PrimaryScreen.Bounds.Height + 100);
-                if(this.Location.X < (Screen.PrimaryScreen.Bounds.Width / 2))
+                this.BackColor = Color.FromArgb(randy.Next(70, 255), randy.Next(70, 255), randy.Next(70, 255));
+                if (this.Location.X < (Screen.PrimaryScreen.Bounds.Width / 2))
                 {
                     Momentum[0] = randy.Next(10, 41);
                 }
@@ -138,8 +140,11 @@ namespace Frame_Ninja
         }
         public void SplitFruitCloser()
         {
-            splittie[0].Close();
-            splittie[0] = null;
+            if (splittie[0] != null)
+            {
+                splittie[0].Close();
+                splittie[0] = null;
+            }
         }
     }
 }

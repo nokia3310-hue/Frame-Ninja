@@ -35,7 +35,7 @@ namespace Frame_Ninja
             {
                 
                 Mainfruit[i] = new Fruit(this, i);
-                
+                Mainfruit[i].Show();
             }
             for (int i = 0; i < Cursortrail.Length; i++)
             {
