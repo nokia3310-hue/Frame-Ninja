@@ -42,11 +42,11 @@ namespace Frame_Ninja
 
                 if (Form1.visiblenodes > number)
                 {
-                    this.Opacity = 1;
+                    this.Show();
                 }
                 else
                 {
-                    this.Opacity = 0;
+                    this.Hide();
                 }
 
                 int des = 10; // desired distance
