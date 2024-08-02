@@ -17,11 +17,13 @@ namespace Frame_Ninja
         Random randy = new Random();
         private int counterms;
         private int countersek;
-
+        private int MovementSlowness = 2;
         private int number;
         private double[] Momentum = new double[2];//momentum[0] = x   ;   momentum[1] = y
         private bool isSpawned = false;
         private Splitfruit[] splittie= new Splitfruit[1];
+        private Splitfruit[] Bombensplittie = new Splitfruit[4];
+
         public Fruit(Form1 fo, int Number)
         {
             InitializeComponent();
@@ -29,6 +31,8 @@ namespace Frame_Ninja
             timer1.Interval = 2;
             this.BackColor = Color.FromArgb(randy.Next(70, 255), randy.Next(70, 255), randy.Next(70, 255));
             number = Number;
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = new Point(Screen.PrimaryScreen.Bounds.Width / 2, Screen.PrimaryScreen.Bounds.Height + 100);
         }
         //initial spawner
         private void timer2_Tick(object sender, EventArgs e)
@@ -55,17 +59,33 @@ namespace Frame_Ninja
             }
             counterms++;
             move();
+            if (isBomb)
+            {
+                blinken();
+            }
             testifMouseHovers();
         }
 
         //spawner && mover funcs
+        private bool isBomb;
         private void spawn()
         {
-            if (!isSpawned)
+            if (!isSpawned && form.GetLive())
             {
-                this.Size = new Size(150, 150);
-                this.Location = new Point(((Screen.PrimaryScreen.Bounds.Width / 2) - (this.Width / 2))+randy.Next(-500, 501), Screen.PrimaryScreen.Bounds.Height + 100);
-                this.BackColor = Color.FromArgb(randy.Next(70, 255), randy.Next(70, 255), randy.Next(70, 255));
+                isBomb = false;
+                if (randy.Next(0,40)<8)
+                {
+                    this.Size = new Size(200, 200);
+                    this.Location = new Point(((Screen.PrimaryScreen.Bounds.Width / 2) - (this.Width / 2)) + randy.Next(-500, 501), Screen.PrimaryScreen.Bounds.Height + 100);
+                    this.BackColor = Color.FromArgb(0,0,0);
+                    isBomb = true;
+                }
+                else
+                {
+                    this.Size = new Size(150, 150);
+                    this.Location = new Point(((Screen.PrimaryScreen.Bounds.Width / 2) - (this.Width / 2)) + randy.Next(-500, 501), Screen.PrimaryScreen.Bounds.Height + 100);
+                    this.BackColor = Color.FromArgb(randy.Next(70, 255), randy.Next(70, 255), randy.Next(70, 255));
+                }
                 if (this.Location.X < (Screen.PrimaryScreen.Bounds.Width / 2))
                 {
                     Momentum[0] = randy.Next(10, 41);
@@ -75,15 +95,32 @@ namespace Frame_Ninja
                     Momentum[0] = randy.Next(-40, -9);
                 }
                 
-                Momentum[1] = randy.Next(70, 90);
+                Momentum[1] = randy.Next(70/MovementSlowness, 90/MovementSlowness);
                 isSpawned = true;
             }
+        }
+        private int BlinkCounter = 0;
+        private void blinken()
+        {
+            if (BlinkCounter < 10)
+            {
+                this.BackColor = Color.FromArgb(0, 0, 0);
+            }
+            if (BlinkCounter >10 && BlinkCounter<20)
+            {
+                this.BackColor = Color.FromArgb(255, 0, 0);
+            }
+            if (BlinkCounter > 20)
+            {
+                BlinkCounter = 0;
+            }
+            BlinkCounter++;
         }
         private void move()
         {
             if(Momentum[1] > -100)
             {
-                Momentum[1] -= 3;
+                Momentum[1] -= (3 / MovementSlowness);
                 if(Momentum[0] > 0)
                 {
                     Momentum[0] *= 0.97;
@@ -93,12 +130,19 @@ namespace Frame_Ninja
                     Momentum[0] *= 0.97;
                 }
             }
-            if (this.Location.Y > 1500)
+            if (this.Location.Y > Screen.PrimaryScreen.Bounds.Height + 200)
             {
+                if (isSpawned && !issliced && !isBomb)
+                {
+                    form.Lowerlives();
+                }
                 isSpawned = false;
                 issliced = false;
             }
-            this.Location = new Point(this.Location.X + (int)Momentum[0], this.Location.Y - (int)Momentum[1]);
+            if (isSpawned)
+            {
+                this.Location = new Point(this.Location.X + (int)Momentum[0], this.Location.Y - (int)Momentum[1]);
+            }
         }
 
 
@@ -122,12 +166,30 @@ namespace Frame_Ninja
         {
             if (!issliced)
             {
-                this.Size = new Size(75, 75);
-                splittie[0]= new Splitfruit(this, this.Location.X, this.Location.Y, this.BackColor);
-                splittie[0].Show();
+                if (isBomb)
+                {
+                    this.Size = new Size(125, 125);
+                    for (int i = 0; i < 4; i++)
+                    {
+                        Bombensplittie[i] = new Splitfruit(this, this.Location.X, this.Location.Y, this.BackColor, isBomb, i);
+                        Bombensplittie[i].Show();
+                    }
+                    
+                    Momentum[0] = randy.Next(-80, 80);
+                    Momentum[1] = randy.Next(-80, 80);
+                    form.Lowerlives();
+                    form.Addscore(-250);
+                }
+                else
+                {
+                    this.Size = new Size(75, 75);
+                    splittie[0] = new Splitfruit(this, this.Location.X, this.Location.Y, this.BackColor, isBomb, 0);
+                    splittie[0].Show();
+                    Momentum[0] = randy.Next(-25, 25);
+                    Momentum[1] = randy.Next(10, 40);
+                    form.Addscore(100);
+                }
                 issliced = true;
-                Momentum[0] = randy.Next(-25, 25);
-                Momentum[1] = randy.Next(10, 40);
                 try
                 {
                     this.BackColor = Color.FromArgb(this.BackColor.R - 50, this.BackColor.G - 50, this.BackColor.B - 50);
@@ -145,6 +207,18 @@ namespace Frame_Ninja
                 splittie[0].Close();
                 splittie[0] = null;
             }
+        }
+        public void SplitBombCloser(int number)
+        {
+            if (Bombensplittie[number] != null)
+            {
+                Bombensplittie[number].Close();
+                Bombensplittie[number] = null;
+            }
+        }
+        public int getMovementSlowness()
+        {
+            return MovementSlowness;
         }
     }
 }

@@ -35,4 +35,9 @@ C:\Users\samuel\Documents\git_repos\Frame-Ninja\Frame Ninja\obj\Debug\Frame Ninj
 C:\Users\samuel\Documents\git_repos\Frame-Ninja\Frame Ninja\obj\Debug\Frame Ninja.exe
 C:\Users\samuel\Documents\git_repos\Frame-Ninja\Frame Ninja\obj\Debug\Frame Ninja.pdb
 C:\Users\point\Documents\git_repos\Frame-Ninja\Frame Ninja\obj\Debug\Frame_Ninja.Splitfruit.resources
+<<<<<<< HEAD
 C:\Users\samuel\Documents\git_repos\Frame-Ninja\Frame Ninja\obj\Debug\Frame_Ninja.Splitfruit.resources
+=======
+C:\Users\point\Documents\git_repos\Frame-Ninja\Frame Ninja\obj\Debug\Frame_Ninja.Leben.resources
+C:\Users\point\Documents\git_repos\Frame-Ninja\Frame Ninja\obj\Debug\Frame_Ninja.Scoreboard.resources
+>>>>>>> c5a07bd8a5a2583aeb3a938f055220d35176178d
