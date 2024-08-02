@@ -23,12 +23,10 @@ namespace Frame_Ninja
 
 
         public static System.Timers.Timer _delayTimer;
-
-
-        public Form1()
+        //public static CursorTrailNodes[] Cursortrail = new CursorTrailNodes[10];
+        //public Point[] mouseTrack = new Point[20];
         {
             InitializeComponent();
-            this.Height = Screen.PrimaryScreen.Bounds.Height;
             this.Width = Screen.PrimaryScreen.Bounds.Width;
 
             for (int i = 0; i < Mainfruit.Length; i++)
@@ -47,7 +45,6 @@ namespace Frame_Ninja
             _delayTimer.Interval = 10; 
             _delayTimer.Elapsed += ExecuteFunction; 
             _delayTimer.AutoReset = true; 
-
            
             _delayTimer.Start();
             
@@ -67,7 +64,11 @@ namespace Frame_Ninja
                 {
                     
                     mouseTrack[i] = mouseTrack[i - 1];
+                if(mouseisdown)
+                {
                     mouseTrack[0] = Cursor.Position;
+                }
+                    
                 
                     
                 }
@@ -88,7 +89,7 @@ namespace Frame_Ninja
             vt.Start();*/
         }
 
-        private bool mouseisdown;
+        private static bool mouseisdown;
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
             mouseisdown = true;
