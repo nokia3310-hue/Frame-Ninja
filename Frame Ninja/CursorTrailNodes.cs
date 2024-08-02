@@ -15,6 +15,7 @@ namespace Frame_Ninja
         Form1 form;
         private int counter;
         private int number;
+        
         public CursorTrailNodes(Form1 fo, int num)
         {
             InitializeComponent();
@@ -39,10 +40,18 @@ namespace Frame_Ninja
                 Point mouseposP = crappyfy(new Point(Cursor.Position.X-5, Cursor.Position.Y-5));
 
 
+                if (Form1.visiblenodes > number)
+                {
+                    this.Opacity = 1;
+                }
+                else
+                {
+                    this.Opacity = 0;
+                }
 
-                int des = 20; // desired distance
+                int des = 10; // desired distance
 
-                int crt = 40; // critical distance
+                int crt = 20; // critical distance
 
                 if (number == 0)
                 {
@@ -121,7 +130,8 @@ namespace Frame_Ninja
             aY = Math.Round(aY);
             aY *= 10;
            
-            return new Point((int)aX, (int)aY);
+            //return new Point((int)aX, (int)aY);
+            return a;
         }
     }
 }

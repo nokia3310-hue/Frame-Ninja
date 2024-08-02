@@ -22,4 +22,19 @@ C:\Users\point\Documents\git_repos\Frame-Ninja\Frame Ninja\obj\Debug\Frame Ninja
 C:\Users\point\Documents\git_repos\Frame-Ninja\Frame Ninja\obj\Debug\Frame Ninja.csproj.CoreCompileInputs.cache
 C:\Users\point\Documents\git_repos\Frame-Ninja\Frame Ninja\obj\Debug\Frame Ninja.exe
 C:\Users\point\Documents\git_repos\Frame-Ninja\Frame Ninja\obj\Debug\Frame Ninja.pdb
+<<<<<<< HEAD
+C:\Users\samuel\Documents\git_repos\Frame-Ninja\Frame Ninja\bin\Debug\Frame Ninja.exe.config
+C:\Users\samuel\Documents\git_repos\Frame-Ninja\Frame Ninja\bin\Debug\Frame Ninja.exe
+C:\Users\samuel\Documents\git_repos\Frame-Ninja\Frame Ninja\bin\Debug\Frame Ninja.pdb
+C:\Users\samuel\Documents\git_repos\Frame-Ninja\Frame Ninja\obj\Debug\Frame Ninja.csproj.AssemblyReference.cache
+C:\Users\samuel\Documents\git_repos\Frame-Ninja\Frame Ninja\obj\Debug\Frame_Ninja.CursorTrailNodes.resources
+C:\Users\samuel\Documents\git_repos\Frame-Ninja\Frame Ninja\obj\Debug\Frame_Ninja.Form1.resources
+C:\Users\samuel\Documents\git_repos\Frame-Ninja\Frame Ninja\obj\Debug\Frame_Ninja.Fruit.resources
+C:\Users\samuel\Documents\git_repos\Frame-Ninja\Frame Ninja\obj\Debug\Frame_Ninja.Properties.Resources.resources
+C:\Users\samuel\Documents\git_repos\Frame-Ninja\Frame Ninja\obj\Debug\Frame Ninja.csproj.GenerateResource.cache
+C:\Users\samuel\Documents\git_repos\Frame-Ninja\Frame Ninja\obj\Debug\Frame Ninja.csproj.CoreCompileInputs.cache
+C:\Users\samuel\Documents\git_repos\Frame-Ninja\Frame Ninja\obj\Debug\Frame Ninja.exe
+C:\Users\samuel\Documents\git_repos\Frame-Ninja\Frame Ninja\obj\Debug\Frame Ninja.pdb
+=======
 C:\Users\point\Documents\git_repos\Frame-Ninja\Frame Ninja\obj\Debug\Frame_Ninja.Splitfruit.resources
+>>>>>>> 0364cb2aa2877f2ceb106796b067529ed070ec85
