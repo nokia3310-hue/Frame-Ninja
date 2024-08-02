@@ -41,3 +41,5 @@ C:\Users\samuel\Documents\git_repos\Frame-Ninja\Frame Ninja\obj\Debug\Frame_Ninj
 C:\Users\point\Documents\git_repos\Frame-Ninja\Frame Ninja\obj\Debug\Frame_Ninja.Leben.resources
 C:\Users\point\Documents\git_repos\Frame-Ninja\Frame Ninja\obj\Debug\Frame_Ninja.Scoreboard.resources
 >>>>>>> c5a07bd8a5a2583aeb3a938f055220d35176178d
+C:\Users\samuel\Documents\git_repos\Frame-Ninja\Frame Ninja\obj\Debug\Frame_Ninja.Leben.resources
+C:\Users\samuel\Documents\git_repos\Frame-Ninja\Frame Ninja\obj\Debug\Frame_Ninja.Scoreboard.resources
